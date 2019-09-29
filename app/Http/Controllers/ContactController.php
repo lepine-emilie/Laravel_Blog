@@ -29,6 +29,10 @@ class ContactController extends Controller
         return view('contact');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function send(Request $request)
     {
         $users = User::whereHas("roles", function ($query) {
@@ -36,7 +40,6 @@ class ContactController extends Controller
         })->get();
 
         Notification::send($users, new ContactAdmin($request));
-        Session::flash('success', 'Your message  was sent successfully');
-        return redirect()->route('home')->with('');
+        return redirect()->route('home')->with('mailStatus', 'Your message  was sent successfully');
     }
 }
