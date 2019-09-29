@@ -1,0 +1,11 @@
+.card {
+    margin-right: 20px;
+    margin-top: 20px;
+}
+.edit_delete{
+    display: inline-flex;
+    margin: 5px;
+}
+.edit_delete > form{
+    margin-right: 5px;
+}
