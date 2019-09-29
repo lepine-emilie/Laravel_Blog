@@ -29,11 +29,11 @@
                             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseComments" aria-expanded="false" aria-controls="collapseExample">
                                 View comments
                             </button>
-                            @can('create', $comments)
+{{--                            @can('create', $comment)--}}
                             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCommentAction" aria-expanded="false" aria-controls="collapseExample">
                                 Comment
                             </button>
-                                @endcan
+{{--                                @endcan--}}
                         </p>
                         <div class="collapse" id="collapseComments">
                             <div class="card" >

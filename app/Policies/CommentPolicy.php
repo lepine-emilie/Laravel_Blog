@@ -66,7 +66,7 @@ class CommentPolicy
      */
     public function update(User $user, Comment $comment)
     {
-        if ($user->hasRole('Commentateur') && $user->id === $post->user_id){
+        if ($user->hasRole('Commentateur') && $user->id === $comment->user_id){
             return true;
         }
 
