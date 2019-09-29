@@ -29,9 +29,11 @@
                             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseComments" aria-expanded="false" aria-controls="collapseExample">
                                 View comments
                             </button>
+                            @can('create', $comments)
                             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCommentAction" aria-expanded="false" aria-controls="collapseExample">
                                 Comment
                             </button>
+                                @endcan
                         </p>
                         <div class="collapse" id="collapseComments">
                             <div class="card" >
@@ -61,6 +63,7 @@
                     </div>
                     <div class="collapse" id="collapseCommentAction">
                         <div class="card-footer text-muted">
+                            @can('create', $comment)
                             <form method="post" action="{{route('comments.store')}}">
                                 @csrf
                                 <label for="content" class="col-md-4 col-form-label text-md-left">{{ __('Comment') }}</label>
@@ -70,6 +73,7 @@
                                 <input type="submit" class="btn btn-secondary btn-sm" value="Submit Comment">
 
                             </form>
+                                @endcan
                         </div>
                     </div>
                 </div>

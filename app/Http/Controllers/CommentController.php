@@ -42,11 +42,13 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function store(CommentUpdateRequest $request)
+    public function store(CommentUpdateRequest $request, Comment $comment)
     {
+        $this->authorize("create", $comment);
         $comment = New Comment();
         $comment->content = $request->content;
         $comment->post_id = $request->post_id;

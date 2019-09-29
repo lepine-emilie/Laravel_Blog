@@ -29,8 +29,10 @@ class PostsController extends Controller
     /**
      * Shows right page
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function new(){
+    public function new(Post $post){
+        $this->authorize("create", $post);
         return view('posts.new');
     }
 
@@ -38,8 +40,10 @@ class PostsController extends Controller
      * Creates a new post
      *
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function create(){
+    public function create(Post $post){
+        $this->authorize("create", $post);
         $data = request()->validate([
             'title' => ['required'],
             'content' => ['required'],

@@ -51,7 +51,9 @@ class PostPolicy
      */
     public function create(User $user)
     {
-        //
+        if ($user->hasRole('Blogueur')){
+            return true;
+        }
     }
 
     /**
@@ -63,7 +65,9 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        return $user->id === $post->user_id;
+        if ($user->hasRole('Blogueur') && $user->id === $post->user_id){
+            return true;
+        }
     }
 
     /**

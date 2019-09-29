@@ -52,7 +52,9 @@ class CommentPolicy
      */
     public function create(User $user)
     {
-       //
+        if ($user->hasRole('Commentateur')){
+            return true;
+        }
     }
 
     /**
@@ -64,7 +66,9 @@ class CommentPolicy
      */
     public function update(User $user, Comment $comment)
     {
-        return $user->id === $comment->user_id;
+        if ($user->hasRole('Commentateur') && $user->id === $post->user_id){
+            return true;
+        }
 
     }
 
