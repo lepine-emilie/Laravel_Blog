@@ -7,16 +7,15 @@
     <div class="container">
         <div class="row">
             {{--            <div class="card-deck">--}}
-
             @forelse($posts as $post)
                 <div class="card border-dark mb-3">
                     <div class="card-body">
                         <h5 class="card-title"><a href="{{route('show_single', ['post'=> $post['id']])}}">{{$post['title']}}</a></h5>
                         <p class="card-text">{!! nl2br(BBCode::convertToHtml(e($post->content))) !!}</p>
                         <p class="card-text badge badge-dark"><small>Tags : {{$post->tags}}</small></p>
-                        <p class="card-text"><small class="text-muted">By <a href="{{route('show_post_',['username' => $post['username']])}}">{{$post['username']}}</a>  Last updated {{$post['updated_at']}}
+                        <p class="card-text"><small class="text-muted">By <a href="{{route('show_post_',['username' => $post->user->username])}}">{{$post->user->username}}</a>  Last updated {{$post['updated_at']}}
                         {{$post['comment_count']}}
-                        @if($post['comment_count']== "1")
+                        @if($post['comment_count']=== "1")
                         comment</small></p>
                         @else
                         comments</small></p>

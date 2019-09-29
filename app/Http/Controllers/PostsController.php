@@ -58,10 +58,6 @@ class PostsController extends Controller
     public function show(){
 
         $posts = \App\Post::with("user")->withCount("comment")->orderby('id', 'desc')->paginate(5);
-        foreach($posts as $post) {
-            $post['username'] = User::find(
-                $post['user_id'])->username;
-        }
         return view('posts.show', compact('posts'));
     }
 
@@ -76,10 +72,6 @@ class PostsController extends Controller
         $posts = \App\Post::whereHas("user", function ($query) use ($username) {
             $query->where("username", $username);
         })->paginate(5);
-        foreach($posts as $post) {
-            $post['username'] = User::find(
-                $post['user_id'])->username;
-        }
         return view('posts.show', compact('posts'));
     }
 
