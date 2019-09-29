@@ -29,7 +29,7 @@ Route::post('/delete', 'UserController@destroy')->name('delete');
 Route::resource('comments', 'CommentController');
 Route::get('/contact', 'ContactController@create')->name('contact.create');
 Route::post('/contact', 'ContactController@send')->name('contact.send');
-
+Route::get('/search/:keywords', 'SearchController@search' )->name("search.create");
 Route::middleware('admin')->prefix('admin')->namespace("Admin")->group(function(){
    Route::get('/', 'AdminController@index')->name('admin.index');
    Route::get('/users', 'UserController@index')->name('users.index');

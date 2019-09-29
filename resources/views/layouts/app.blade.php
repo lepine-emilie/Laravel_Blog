@@ -39,6 +39,7 @@
                         <li class="nav-item"><a href="{{route('show_post')}}" class="nav-link">View all Posts</a></li>
                         <li class="nav-item"><a href="{{route('contact.create')}}" class="nav-link">Contact</a></li>
                     @endauth
+                        <li class="divider" role="separator"></li>
                     @admin
                         <li class="nav-item"><a href="{{ route('admin.index') }}" class="nav-link">Admin Panel</a></li>
                         <li class="nav-item"><a href="{{ route('users.index') }}" class="nav-link">Users</a></li>
@@ -60,6 +61,10 @@
                             </li>
                         @endif
                     @else
+                        <form class="form-inline my-2 my-lg-0" method="get" action="{{route('search.create')}}">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->username }} <span class="caret"></span>

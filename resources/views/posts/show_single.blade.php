@@ -11,6 +11,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><a href="{{route('show_single', ['post'=> $post['id']])}}">{{$post['title']}}</a></h5>
                         <p class="card-text">{!! BBCode::convertToHtml(e($post->content)) !!}</p>
+                        <p class="card-text badge badge-dark"><small>Tags : {{$post->tags}}</small></p>
                         <p class="card-text"><small class="text-muted">By <a href="{{route('show_post_',['username' => $post['username']])}}">{{$post['username']}}</a>  Last updated {{$post['updated_at']}}</small></p>
                         <div class="edit_delete">
                             @can('delete', $post)
